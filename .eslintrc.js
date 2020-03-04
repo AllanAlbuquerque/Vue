@@ -13,6 +13,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'comma-dangle': ['error', 'never'],
     'arrow-parens': 'off',
-    'arrow-body-style': ['error', 'always']
+    'arrow-body-style': ['error', 'always'],
+    'no-plusplus': 'off'
   }
 };

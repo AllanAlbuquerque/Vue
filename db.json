@@ -44,6 +44,42 @@
       "date": "2019-02-02T23:27:00.000Z",
       "time": "1:00",
       "attendees": []
+    },
+    {
+      "id": 5328,
+      "user": {
+        "id": "TCAF00993160",
+        "name": "Allan de Albuquerque Ferreira"
+      },
+      "category": "education",
+      "organizer": {
+        "id": "TCAF00993160",
+        "name": "Allan de Albuquerque Ferreira"
+      },
+      "title": "Vue",
+      "description": "Estudar Vue.js",
+      "location": "Brasil",
+      "date": "2020-03-04T20:19:00.000Z",
+      "time": "18:00",
+      "attendees": []
+    },
+    {
+      "id": 7819,
+      "user": {
+        "id": "TCAF00993160",
+        "name": "Allan de Albuquerque Ferreira"
+      },
+      "category": "sustainability",
+      "organizer": {
+        "id": "TCAF00993160",
+        "name": "Allan de Albuquerque Ferreira"
+      },
+      "title": "Meio Ambiente",
+      "description": "Protestar pelado na paulista",
+      "location": "Avenida Paulista",
+      "date": "2020-03-20T20:31:00.000Z",
+      "time": "13:00",
+      "attendees": []
     }
   ]
 }

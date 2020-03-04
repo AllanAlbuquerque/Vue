@@ -1,10 +1,13 @@
 <template>
   <div>
     <div class="event-header">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
+      <span class="eyebrow">Dia {{ new Date(event.date).
+        toISOString().slice(0,10) }}
+        ás {{ event.time }}H
+      </span>
       <h1 class="title">{{ event.title }}</h1>
-      <h5>Organized by {{ event.organizer }}</h5>
-      <h5>Category: {{ event.category }}</h5>
+        <h5><i>Organized by {{ event.organizer.name }}</i></h5>
+        <h5>Category: {{ event.category }}</h5>
     </div>
 
     <BaseIcon name="map">
@@ -21,7 +24,11 @@
       <span class="badge -fill-gradient">{{ event.attendees ? event.attendees.length : 0 }}</span>
     </h2>
     <ul class="list-group">
-      <li v-for="(attendee, index) in event.attendees" :key="index" class="list-item">
+      <li
+        v-for="(attendee, index) in event.attendees"
+        :key="index"
+        class="list-item"
+      >
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
@@ -41,10 +48,10 @@ export default {
 
   created() {
     EventService.getEvent(this.id)
-      .then((response) => {
+      .then(response => {
         this.event = response.data;
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(`Houve um erro: ${error.response}`);
       });
   }
