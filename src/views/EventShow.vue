@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="event-header">
-      <span class="eyebrow">Dia {{ new Date(event.date).
+      <span class="eyebrow"><i>{{ new Date(event.date).
         toISOString().slice(0,10) }}
-        ás {{ event.time }}H
-      </span>
+          ás {{ event.time }}H
+        </i></span>
       <h1 class="title">{{ event.title }}</h1>
-        <h5><i>Organized by {{ event.organizer.name }}</i></h5>
-        <h5>Category: {{ event.category }}</h5>
+      <h5><i>Organized by {{ event.organizer.name }}</i></h5>
+      <h5>Category: {{ event.category }}</h5>
     </div>
 
     <BaseIcon name="map">

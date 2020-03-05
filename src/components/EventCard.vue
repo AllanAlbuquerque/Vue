@@ -4,7 +4,9 @@
     :to="{ name: 'event-show', params: { id: event.id } }"
   >
     <div class="event-card -shadow">
-      <span class="eyebrow">@{{ event.date }} às {{ event.time }}</span>
+      <span class="eyebrow"><i>Data: {{ new Date(event.date).
+        toISOString().slice(0,10) }}
+          ás {{ event.time }}H</i></span>
       <h4 class="title">{{ event.title }}</h4>
       <BaseIcon name="users">{{ event.attendees.length }} atendentes</BaseIcon>
     </div>
@@ -37,5 +39,8 @@ export default {
   color: black;
   text-decoration: none;
   font-weight: 100;
+}
+.eyebrow {
+  text-shadow: 1px 1px rgb(156, 155, 155);
 }
 </style>
