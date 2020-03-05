@@ -18,6 +18,7 @@ export default {};
   justify-content: space-between;
   align-items: center;
   height: 60px;
+  border-bottom: solid 2px #20865a;
 }
 .nav > .brand {
   font-family: 'Montserrat', sans-serif;
