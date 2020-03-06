@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1>Events Listing</h1>
+    <h1>Eventos</h1>
+    <p><i>Olá <span>{{ user.user.name }}</span> estes são os eventos disponíveis:</i></p>
     <EventCard
-      v-for="event in events"
+      v-for="event in event.events"
       :key="event.id"
       :event="event"
     />
@@ -11,15 +12,15 @@
         :to="{ name: 'event-list', query: { page: page - 1 } }"
         rel="prev"
       >
-        Anterior</router-link> |
+        Anterior</router-link>
     </template>
-    <template v-if="totalEvents > this.page * 3">
-      <router-link
-        :to="{ name: 'event-list', query: { page: page + 1 } }"
-        rel="next"
-      >
-        Próximo</router-link>
-    </template>
+    <template v-if="hasNextPage"> | </template>
+    <router-link
+      v-if="hasNextPage"
+      :to="{ name: 'event-list', query: { page: page + 1 } }"
+      rel="next"
+    >
+      Próximo</router-link>
   </div>
 </template>
 
@@ -32,8 +33,10 @@ export default {
     EventCard
   },
   created() {
-    this.$store.dispatch('fetchEvents', {
-      perPage: 3,
+    this.perPage = 3;
+
+    this.$store.dispatch('event/fetchEvents', {
+      perPage: this.perPage,
       page: this.page
     });
   },
@@ -41,10 +44,17 @@ export default {
     page() {
       return parseInt(this.$route.query.page, 10) || 1;
     },
-    ...mapState(['events', 'totalEvents'])
+    hasNextPage() {
+      return this.event.totalEvents > this.page * this.perPage;
+    },
+    ...mapState(['event', 'user'])
   }
 };
 </script>
 
-<style>
+<style scoped>
+span {
+  color: #299164;
+  font-weight: 800;
+}
 </style>
