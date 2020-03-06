@@ -22,22 +22,38 @@ export const mutations = {
 };
 
 export const actions = {
-  createEvent({ commit }, event) {
+  createEvent({ commit, dispatch }, event) {
     return EventService.postEvent(event).then(() => {
       commit('ADD_EVENT', event);
+      const notification = {
+        type: 'success',
+        message: 'Evento criado com sucesso'
+      };
+      dispatch('notification/add', notification, { root: true });
+    }).catch(error => {
+      const notification = {
+        type: 'error',
+        message: `Ocorreu um ocorreu um erro ao criar o evento: ${error.message}`
+      };
+      dispatch('notification/add', notification, { root: true });
+      throw error;
     });
   },
-  fetchEvents({ commit }, { perPage, page }) {
+  fetchEvents({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)
       .then(response => {
         commit('SET_EVENTS', response.data);
         commit('SET_TOTAL_EVENTS', response.headers['x-total-count']);
       })
       .catch(error => {
-        console.log(`Ocorreu um erro: ${error.response}`);
+        const notification = {
+          type: 'error',
+          message: `Ocorreu um problema ao buscar os eventos: ${error.message}`
+        };
+        dispatch('notification/add', notification, { root: true });
       });
   },
-  fetchEvent({ commit, getters }, id) {
+  fetchEvent({ commit, getters, dispatch }, id) {
     const event = getters.getEventById(id);
 
     if (event) {
@@ -48,7 +64,11 @@ export const actions = {
           commit('SET_EVENT', response.data);
         })
         .catch(error => {
-          console.log(`Houve um erro: ${error.response}`);
+          const notification = {
+            type: 'error',
+            message: `Ocorreu um problema ao buscar o evento: ${error.message}`
+          };
+          dispatch('notification/add', notification, { root: true });
         });
     }
   }

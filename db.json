@@ -231,6 +231,24 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 4561,
+      "user": {
+        "id": "TCAF00993160",
+        "name": "Allan"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "TCAF00993160",
+        "name": "Allan"
+      },
+      "title": "Teste",
+      "description": "desc teste",
+      "location": "aqui",
+      "date": "2020-03-25T17:02:00.000Z",
+      "time": "13:00",
+      "attendees": []
     }
   ]
 }

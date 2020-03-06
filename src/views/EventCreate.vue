@@ -91,7 +91,6 @@ export default {
           this.event = this.createFreshEventObject();
         })
         .catch(() => {
-          console.log('Houve um erro ao criar o este evento.');
         });
     },
     createFreshEventObject() {
