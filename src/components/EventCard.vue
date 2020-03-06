@@ -4,7 +4,7 @@
     :to="{ name: 'event-show', params: { id: event.id } }"
   >
     <div class="event-card -shadow">
-      <span class="eyebrow"><i>Data: {{ formattedDate }}
+      <span class="eyebrow"><i>Data: {{ new Date(event.date) | dateFormat('DD/MM/YYYY')  }}
           ás {{ event.time }}H</i></span>
       <h4 class="title">{{ event.title }}</h4>
       <BaseIcon name="users">{{ event.attendees.length }} atendentes</BaseIcon>
@@ -16,12 +16,6 @@
 export default {
   props: {
     event: Object
-  },
-  computed: {
-    formattedDate() {
-      const { date } = this.event;
-      return new Date(date).toISOString().slice(0, 10);
-    }
   }
 };
 </script>

@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="event-header">
-      <span class="eyebrow"><i>{{ new Date(event.date).
-        toISOString().slice(0,10) }}
+      <span class="eyebrow"><i>{{ new Date(event.date) | dateFormat('DD/MM/YYYY') }}
           ás {{ event.time }}H
         </i></span>
       <h1 class="title">{{ event.title }}</h1>
