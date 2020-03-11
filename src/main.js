@@ -1,3 +1,4 @@
+import 'nprogress/nprogress.css';
 import VueFilterDateFormat from 'vue-filter-date-format';
 import BaseIcon from '@/components/BaseIcon.vue';
 import Vue from 'vue';
